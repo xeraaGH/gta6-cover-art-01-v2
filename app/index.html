@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Cover Studio v2 — GTA-style cover art maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1>Vice Cover Studio <span class="v2">v2</span></h1>
+    <p>Your photo, four panels, one poster — exported as a PNG to share.</p>
+  </div>
+  <p class="tag">Photos stay on your machine. Nothing is uploaded.</p>
+</header>
+<main class="app">
+  <aside class="controls">
+    <section>
+      <h2>1 · Photos</h2>
+      <div id="library" class="library" aria-label="Photo library"></div>
+      <div class="row">
+        <label class="upload">Add your photos
+          <input id="upload" type="file" accept="image/*" multiple>
+        </label>
+        <button id="fill-distinct" type="button">Fill distinct</button>
+      </div>
+      <p class="hint">Click a photo to put it in the selected panel, or drag it onto a panel. Every panel gets a different photo.</p>
+    </section>
+    <section>
+      <h2>2 · Layout</h2>
+      <div id="layouts" class="choices"></div>
+      <h2>Size</h2>
+      <div id="sizes" class="choices"></div>
+    </section>
+    <section>
+      <h2>3 · Grade</h2>
+      <div id="grades" class="choices"></div>
+      <p class="hint">One grade for every panel at once, so no panel is left in plain daylight.</p>
+      <label class="field"><span id="panel-label">Panel 1 of 4</span>
+        <select id="panel-grade">
+          <option value="sunset">Sunset</option>
+          <option value="neon">Neon</option>
+          <option value="night">Night Shift</option>
+          <option value="plain">Clean</option>
+        </select>
+      </label>
+      <label class="field"><span>Zoom selected panel</span>
+        <input id="zoom" type="range" min="0" max="120" value="0">
+      </label>
+      <p class="hint">Click a panel to select it, then drag inside it to move its photo.</p>
+    </section>
+    <section>
+      <h2>4 · Caption</h2>
+      <label class="field"><span>Title</span>
+        <input id="caption" type="text" maxlength="40" value="Midnight Vice">
+      </label>
+      <label class="field"><span>Subtitle (script)</span>
+        <input id="subtitle" type="text" maxlength="30" value="neon nights">
+      </label>
+      <label class="field"><span>Title position</span>
+        <select id="title-pos">
+          <option value="top">High</option>
+          <option value="middle" selected>Across the middle</option>
+          <option value="bottom">Low</option>
+        </select>
+      </label>
+      <label class="field"><span>Title size</span>
+        <input id="title-size" type="range" min="70" max="130" value="100">
+      </label>
+      <div class="swatches" aria-label="Title colour">
+        <button type="button" class="swatch on" data-color="#ffffff" style="--c:#ffffff" aria-label="White"></button>
+        <button type="button" class="swatch" data-color="#ffd23f" style="--c:#ffd23f" aria-label="Gold"></button>
+        <button type="button" class="swatch" data-color="#ff7ad9" style="--c:#ff7ad9" aria-label="Pink"></button>
+      </div>
+    </section>
+    <section>
+      <h2>5 · Stickers</h2>
+      <div id="stickers" class="choices"></div>
+      <button id="clear-stickers" type="button">Clear stickers</button>
+      <p class="hint">Stickers land on the cover — drag them around, Delete removes the last one.</p>
+    </section>
+    <button id="export" type="button" class="export">Export PNG</button>
+    <p id="status" role="status"></p>
+  </aside>
+  <section class="stage-wrap">
+    <canvas id="stage" aria-label="Live cover preview"></canvas>
+    <p class="stage-hint">Live preview — click a panel to select it, drag to move its photo, drop a photo onto a panel.</p>
+  </section>
+</main>
+<img id="shot-img" alt="">
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+@font-face {
+  font-family: 'Anton';
+  src: url('./fonts/Anton-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Pacifico';
+  src: url('./fonts/Pacifico-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  background: #120e1c;
+  color: #f4eefc;
+  font: 15px/1.45 system-ui, -apple-system, sans-serif;
+}
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 16px 24px 12px;
+  border-bottom: 2px solid #ff2e88;
+  background: linear-gradient(90deg, #1b1030, #2a0f2e 55%, #120e1c);
+}
+.topbar h1 {
+  margin: 0;
+  font-family: 'Anton', sans-serif;
+  font-size: 30px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 3px 0 #ff2e88, 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+.topbar h1 .v2 {
+  color: #ffd23f;
+  text-shadow: 0 3px 0 #160a24;
+}
+.topbar p { margin: 2px 0 0; color: #c9b8e8; }
+.topbar .tag { color: #8f7fb8; font-size: 13px; }
+
+.app { display: flex; gap: 20px; padding: 18px 24px 24px; align-items: flex-start; }
+.controls { width: 320px; flex: none; display: flex; flex-direction: column; gap: 16px; }
+.controls section {
+  background: #1d1530;
+  border: 1px solid #3a2a5e;
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.controls h2 { margin: 0 0 10px; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #ff7ad9; }
+.hint { margin: 8px 0 0; font-size: 12.5px; color: #a99ac4; }
+
+.library { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.thumb {
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  background: none;
+  cursor: grab;
+  overflow: hidden;
+  position: relative;
+}
+.thumb img { display: block; width: 100%; height: 52px; object-fit: cover; }
+.thumb span {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  font-size: 10px; color: #fff; background: rgba(10, 5, 20, 0.65);
+  padding: 1px 3px; text-align: left; white-space: nowrap; overflow: hidden;
+}
+.thumb:hover { border-color: #ff7ad9; }
+
+.row { display: flex; gap: 8px; margin-top: 10px; }
+.upload {
+  flex: 1; text-align: center; padding: 8px; border-radius: 6px;
+  background: #2c1e4d; color: #fff; font-weight: 700; cursor: pointer;
+}
+.upload input { display: none; }
+button {
+  font: inherit; font-weight: 700; color: #fff;
+  background: #2c1e4d; border: 1px solid #4a3670; border-radius: 6px;
+  padding: 8px 10px; cursor: pointer;
+}
+button:hover { border-color: #ff7ad9; }
+.choices { display: flex; flex-wrap: wrap; gap: 6px; }
+.choice.on { background: #ff2e88; border-color: #ff2e88; }
+.field { display: flex; flex-direction: column; gap: 5px; margin-top: 10px; font-weight: 600; font-size: 13px; }
+.field input[type=text], .field select {
+  font: inherit; padding: 8px; border: 1px solid #4a3670; border-radius: 6px;
+  background: #120e1c; color: #fff;
+}
+.field input[type=range] { accent-color: #ff2e88; }
+.swatches { display: flex; gap: 8px; margin-top: 10px; }
+.swatch {
+  width: 28px; height: 28px; border-radius: 50%; padding: 0;
+  background: var(--c); border: 2px solid transparent;
+}
+.swatch.on { border-color: #fff; box-shadow: 0 0 0 2px #ff2e88; }
+
+.export {
+  padding: 14px; font-size: 17px; background: #ff2e88; border: none;
+  box-shadow: 0 4px 0 #a3134f;
+}
+.export:active { transform: translateY(2px); box-shadow: none; }
+#status { margin: 0; min-height: 20px; color: #8fe3c0; font-size: 13px; }
+
+.stage-wrap { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+#stage {
+  max-width: 100%; height: auto;
+  border-radius: 8px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+  cursor: crosshair;
+  touch-action: none;
+  background: #fdfbf7;
+}
+.stage-hint { margin: 0; color: #8f7fb8; font-size: 13px; }
+
+#shot-img { display: none; }
+body.shot-cover { background: #14101c; }
+body.shot-cover .topbar, body.shot-cover .app { display: none; }
+body.shot-cover #shot-img {
+  display: block; width: 100vw; height: 100vh;
+  object-fit: contain; background: #14101c;
+}
